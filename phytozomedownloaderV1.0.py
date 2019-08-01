@@ -15,8 +15,8 @@ headers = {
 }
 #add headers加请求头，前面有说过加请求头是为了模拟浏览器正常的访问，避免被反爬虫。
 data={}
-data['login']='liudab@163.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
-data['password']='19881227'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
+data['login']='XXXXXXX@XXXXXXXX.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
+data['password']='XXXXXXXX'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
 
 def sign_in():
     url = 'https://signon-old.jgi.doe.gov/signon/create'     #把登录的网址赋值给URL sign_in URL
