@@ -13,3 +13,5 @@ For english users, you can just repleace the code with #annoation code.
 After editing, put the script in you destination folder.
 
 python3 phytozomedownloaderV1.0.py
+
+If you have any bugs or questions, you can contact liudab@163.com
