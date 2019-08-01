@@ -15,8 +15,8 @@ headers = {
 }
 #add headers加请求头，前面有说过加请求头是为了模拟浏览器正常的访问，避免被反爬虫。
 data={}
-data['login']='liudab@163.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
-data['password']='19881227'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
+data['login']='XXXX@XXXXX.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
+data['password']='XXXXXXXX'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
 
 def sign_in():
     url = 'https://signon-old.jgi.doe.gov/signon/create'     #把登录的网址赋值给URL sign_in URL
@@ -43,27 +43,27 @@ def md5sum(filepath):
 #定义一个md5sum函数，返回校验值,def a function md5sum, to check and return md5 value of a certain file
 
 def sdownloadfile(link,filepath,md5):
-    print('文件：'+link+' 正在下载')      #you can use print('file:'+link+' is downloading') as englsih user
+    print('file:'+link+' is downloading') as englsih user      #you can use print('file:'+link+' is downloading') as englsih user
     downloadfile=session.get(link)
     with open(filepath,'wb') as f:
         f.write(downloadfile.content)
     fmd5=md5sum(filepath)
     if fmd5==md5:
-        print('文件：'+filepath+' 下载并校验成功！')    #you can use print('file:'+filepath+' is downloaded and it is intact！') as englsih user
+        print('file:'+filepath+' is downloaded and it is intact！')    #you can use print('file:'+filepath+' is downloaded and it is intact！') as englsih user
     else:
-        print('文件：'+filepath+' 校验失败！')         #you can use print('file:'+filepath+' is failed in md5sum！') as englsih user
-#定义一个sdownloadfile函数，从link下载文件，存储到filepath，并利用md5值对下载完成的文件进行MD5校验, download file and check it integrity
+        print('file:'+filepath+' is failed in md5sum！')         #you can use print('file:'+filepath+' is failed in md5sum！') as englsih user
+#定义一个sdownloadfile函数，从link下载文件，存储到fiprint('file:'+filepath+' is failed in md5sum！')lepath，并利用md5值对下载完成的文件进行MD5校验, download file and check it integrity
 
 def createpath(file_path):
     try:
         if not os.path.exists(file_path):
-            print ('文件夹',file_path,'不存在，重新建立')    #print ('folder',file_path,'is not exist, created it')
+            print ('folder',file_path,'is not exist, created it')    #print ('folder',file_path,'is not exist, created it')
             #os.mkdir(file_path)
             os.makedirs(file_path)
     except IOError as e:
-        print ('文件操作失败',e)      #print ('IOError',e)
+        print ('IOError',e)      #print ('IOError',e)
     except Exception as e:
-        print ('错误 ：',e)    #print ('Error',e)
+        #print ('Error',e)    #print ('Error',e)
 #定义一个createpath函数，检测所在目录是否存在，不存在则建立文件夹，check filedirectory exisit or not, if not create that folder
  
 
@@ -78,12 +78,12 @@ def getxml():
     #下载对应版本的官方xml文件
     xmlDoc = ElementTree.parse('./'+PHYTOALL+'.xml')    #读取并使用ElementTree解析PhytozomeV12.xml文件，并命名为xmlDoc
     folderl1 = xmlDoc.findall('folder')    #使用findall功能找出子一级folder列表
-    print('目前数据库中有以下版本:\n')         #print('The database have these Versions:\n')
+    print('The database have these Versions:\n')        #print('The database have these Versions:\n')
     number=1
     for folderl1x in folderl1:     #遍历一级folder列表
         print(str(number)+'. '+folderl1x.attrib['name'])
         number=number+1
-    pick=input('请输入你想下载的数据库，用数字表示：\n例如:2   输入后请回车\n')           #pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter.\n')
+    pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter\n')           #pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter.\n')
     folderl1name =folderl1[int(pick)-1]
     folderl2 = folderl1name.findall('folder')     #使用findall功能找出子二级folder列表
     folderl2f = folderl1name.findall('file')
@@ -149,12 +149,12 @@ def paralleldownload():
         try:
             if md5sum(tasklist[j][1]) != tasklist[j][2]:
                 sdownloadfile(tasklist[j][0],tasklist[j][1],tasklist[j][2])
-                print('共计'+str(int(len(tasklist)))+'个文件，'+'目前下载完第'+str(j+1)+'个文件')  #print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))
+                print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))  #print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))
             else:
-                print('第'+str(j+1)+'个文件已存在且与本地文件一致')    #print('The No.'+str(j+1)+'file is already existing, and it don't need to be download again')
+                print('The No.'+str(j+1)+'file is already existing, and it don't need to be download again')    #print('The No.'+str(j+1)+'file is already existing, and it don't need to be download again')
         except FileNotFoundError as e:
             sdownloadfile(tasklist[j][0],tasklist[j][1],tasklist[j][2])
-            print('共计'+str(int(len(tasklist)))+'个文件，'+'目前下载完第'+str(j+1)+'个文件')  #print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))
+            print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))  #print('There are total'+str(int(len(tasklist)))+'files，'+'We are downloading the number:'+str(j+1))
 paralleldownload()
         
         
