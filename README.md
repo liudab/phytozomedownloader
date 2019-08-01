@@ -10,4 +10,6 @@ data['password']='XXXXXXXXXX'       #Replace this with you PASSWORD in phytozome
 
 For english users, you can just repleace the code with #annoation code.
 
-After editing, python 3
+After editing, put the script in you destination folder.
+
+python3 phytozomedownloaderV1.0.py
