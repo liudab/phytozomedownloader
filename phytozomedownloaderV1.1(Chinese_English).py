@@ -18,8 +18,8 @@ headers = {
 }
 #add headers加请求头，前面有说过加请求头是为了模拟浏览器正常的访问，避免被反爬虫。
 data={}
-data['login']='liudab@163.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
-data['password']='19881227'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
+data['login']='XXXX@XXXXX.com'     #Replace this with you ACCOUNTNAME in phytozome.jgi.doe.gov账户名
+data['password']='XXXXXXXX'       #Replace this with you PASSWORD in phytozome.jgi.doe.gov密码
 
 def sign_in():
     global cookies_dict       #define cookies_dict to store dict form cookie
@@ -78,7 +78,7 @@ def getxml():
     for folderl1x in folderl1:     #遍历一级folder列表
         print(str(number)+'. '+folderl1x.attrib['name'])
         number=number+1
-    pick=2           #pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter.\n')
+    pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter\n')     #pick=input('Pleas choose which version you want，input with number：\nFor example:2   After your input,pree Enter.\n')
     folderl1name =folderl1[int(pick)-1]
     folderl2 = folderl1name.findall('folder')     #使用findall功能找出子二级folder列表
     folderl2f = folderl1name.findall('file')
